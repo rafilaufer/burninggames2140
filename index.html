@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burning Games</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #1a1a1a;
+            --card-bg: rgba(40, 40, 40, 0.95);
+            --text-color: #f1c40f; 
+            --accent: #e74c3c; 
+            --hover-flame: #ff5722;
+            --retro-font: 'Press Start 2P', cursive;
+        }
+
+        @keyframes pixelRain {
+            0% { background-position: 0px 0px; }
+            100% { background-position: 0px 1000px; }
+        }
+
+        body {
+            font-family: var(--retro-font);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            background-image: 
+                linear-gradient(rgba(26, 26, 26, 0.8), rgba(26, 26, 26, 0.8)), 
+                url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAKrVq36z8gAFWNgAKmD8cF8uDhQEqQAACorD54uY2S1AAAAAElFTkSuQmCC");
+            background-repeat: repeat;
+            animation: pixelRain 25s linear infinite;
+        }
+
+        header { text-align: center; padding: 30px 0; }
+        h1 { font-size: 2rem; text-shadow: 3px 3px 0px var(--accent); margin-bottom: 20px; }
+        
+        .section-title {
+            text-align: center;
+            font-size: 1rem;
+            margin: 40px 0 20px;
+            color: #fff;
+            text-transform: uppercase;
+            border-bottom: 2px dashed var(--accent);
+            display: inline-block;
+            width: 100%;
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .game-card {
+            background: var(--card-bg);
+            border: 3px solid #333;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            transition: 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            min-height: 180px;
+        }
+
+        .game-card:hover {
+            transform: scale(1.05);
+            background: var(--hover-flame);
+            border-color: #fff;
+        }
+
+        .game-card img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            object-fit: cover;
+            background-color: #000;
+        }
+
+        .game-card span { font-size: 0.45rem; text-align: center; line-height: 1.4; }
+
+        .ent-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #222;
+            border: 8px solid #444;
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            margin-bottom: 20px;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+        }
+
+        .channel-btn {
+            display: block;
+            width: fit-content;
+            margin: 10px auto;
+            padding: 12px 20px;
+            background: #c0392b;
+            color: white;
+            text-decoration: none;
+            font-size: 0.6rem;
+            border: 3px solid #fff;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        #unblock-btn {
+            font-family: 'Press Start 2P';
+            background: #d35400;
+            color: #fff;
+            border: 3px solid #fff;
+            padding: 12px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            font-size: 0.7rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>BURNING GAMES</h1>
+    <button id="unblock-btn" onclick="launchUnblocked()">LAUNCH STEALTH MODE</button>
+</header>
+
+<div class="section-title">GAMING ZONE</div>
+<div class="game-grid">
+    <a href="https://poki.com/en/g/level-devil" target="_blank" class="game-card">
+        <img src="https://assets.poki.com/img/games/level-devil-icon.png" alt="Level Devil">
+        <span>Level Devil</span>
+    </a>
+    <a href="https://poki.com/en/g/we-become-what-we-behold" target="_blank" class="game-card">
+        <img src="https://img.poki.com/cdn-cgi/image/f=auto/b00ad8c72f53412a8a5f824e414c1737.png" alt="WBWWB">
+        <span>WBWWB</span>
+    </a>
+    <a href="https://poki.com/en/g/forgotten-hill-surgery" target="_blank" class="game-card">
+        <img src="https://assets.poki.com/img/games/forgotten-hill-surgery-icon.png" alt="Forgotten Hill">
+        <span>Forgotten Hill</span>
+    </a>
+    <a href="https://poki.com/en/g/short-life" target="_blank" class="game-card">
+        <img src="https://assets.poki.com/img/games/short-life-icon.png" alt="Short Life">
+        <span>Short Life</span>
+    </a>
+    <a href="https://poki.com/en/g/ragdoll-hit" target="_blank" class="game-card">
+        <img src="https://assets.poki.com/img/games/ragdoll-hit-icon.png" alt="Ragdoll Hit">
+        <span>Ragdoll Hit</span>
+    </a>
+
+    <a href="https://www.crazygames.com/game/stickman-annihilation-2" target="_blank" class="game-card">
+        <img src="https://images.crazygames.com/stickman-annihilation-2/20210211100226/stickman-annihilation-2-cover" alt="Stickman">
+        <span>Stickman Annihilation 2</span>
+    </a>
+    <a href="https://www.crazygames.com/game/turbo-dismounting" target="_blank" class="game-card">
+        <img src="https://images.crazygames.com/games/turbo-dismounting/cover-1583401543661.png" alt="Turbo">
+        <span>Turbo Dismounting</span>
+    </a>
+    <a href="https://www.crazygames.com/game/stick-crush" target="_blank" class="game-card">
+        <img src="https://images.crazygames.com/stick-crush/20210125155909/stick-crush-cover" alt="Stick Crush">
+        <span>Stick Crush</span>
+    </a>
+
+    <a href="https://sites.google.com/view/glasgowstudents/games/gladihoppers" target="_blank" class="game-card">
+        <img src="https://play-lh.googleusercontent.com/rN4r-vj6H6bQYm-Vf9S7x2p5zQ" alt="Gladihoppers">
+        <span>Gladihoppers</span>
+    </a>
+    <a href="https://sites.google.com/view/glasgowstudents/games/minecraft-1-8" target="_blank" class="game-card">
+        <img src="https://upload.wikimedia.org/wikipedia/en/5/51/Minecraft_cover.png" alt="Minecraft">
+        <span>Minecraft 1.8</span>
+    </a>
+    <a href="https://sites.google.com/view/glasgowstudents/games/5-nights-at-freddys" target="_blank" class="game-card">
+        <img src="https://upload.wikimedia.org/wikipedia/en/f/f3/Five_Nights_at_Freddy%27s_1_cover.png" alt="FNAF">
+        <span>FNAF</span>
+    </a>
+    <a href="https://sites.google.com/view/warp-speed" target="_blank" class="game-card">
+        <img src="https://play-lh.googleusercontent.com/8v_9-v5-XvX" alt="Warp Speed">
+        <span>Warp Speed</span>
+    </a>
+
+    <a href="https://www.addictinggames.com/strategy/free-rider-2" target="_blank" class="game-card">
+        <img src="https://www.addictinggames.com/sites/default/files/free-rider-2.png" alt="Free Rider">
+        <span>Free Rider 2</span>
+    </a>
+</div>
+
+<div class="section-title">ENTERTAINMENT</div>
+<div class="ent-container">
+    <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <a href="https://www.youtube.com/channel/UCX2uY734wRQELlT_uh8Fl4ZA" target="_blank" class="channel-btn">
+        SUB TO BURNING GAMES
+    </a>
+</div>
+
+<script>
+    function launchUnblocked() {
+        var win = window.open();
+        var url = window.location.href;
+        var iframe = win.document.createElement('iframe');
+        iframe.style.width = "100%"; iframe.style.height = "100%";
+        iframe.style.border = "none"; iframe.style.position = "fixed";
+        iframe.style.top = "0"; iframe.style.left = "0";
+        iframe.src = url;
+        win.document.body.style.margin = "0";
+        win.document.body.appendChild(iframe);
+    }
+</script>
+
+</body>
+</html>
