@@ -251,26 +251,54 @@
         }
     }
 
-    // --- STEALTH & GAMES ---
-    function stealthLaunch() {
-        let win = window.open('about:blank', '_blank');
-        if (!win) return alert('Allow popups!');
-        let html = `<html><head><title>My Drive - Google Drive</title><link rel="icon" href="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_32dp.png"><style>body,html{margin:0;padding:0;height:100%;overflow:hidden;}iframe{border:none;width:100%;height:100%;}</style></head><body><iframe src="${window.location.href}"></iframe></body></html>`;
-        win.document.write(html);
-        win.document.close();
+  
+function openGame(encodedUrl) {
+    const decodedUrl = atob(encodedUrl);
+    
+    // 1. Open the new tab
+    let win = window.open('about:blank', '_blank');
+    if (!win) {
+        alert('Popup blocked! Click the icon in the address bar to allow them.');
+        return;
     }
 
-    function openGame(encodedUrl) {
-        const decodedUrl = atob(encodedUrl);
-        let win = window.open('about:blank', '_blank');
-        if (!win) return alert('Allow popups!');
-        win.document.title = "Google Docs";
-        let link = win.document.createElement('link');
-        link.rel = 'icon';
-        link.href = 'https://ssl.gstatic.com/docs/documents/images/kix-favicon-2020q4.ico';
-        win.document.head.appendChild(link);
-        win.location.href = decodedUrl;
-    }
+    // 2. Setup the Google Docs Disguise
+    win.document.title = "Google Docs";
+    let favicon = win.document.createElement('link');
+    favicon.rel = 'icon';
+    favicon.href = 'https://ssl.gstatic.com/docs/documents/images/kix-favicon-2020q4.ico';
+    win.document.head.appendChild(favicon);
+
+    // 3. Apply styles to the new tab to make the game full-screen
+    win.document.body.style.margin = '0';
+    win.document.body.style.height = '100vh';
+    win.document.body.style.overflow = 'hidden';
+    
+    // 4. Create the frame for the game
+    let iframe = win.document.createElement('iframe');
+    iframe.style.border = 'none';
+    iframe.style.width = '100%';
+    iframe.style.height = '100%';
+    iframe.src = decodedUrl;
+    
+    // 5. Emergency Redirect: If the site refuses to load in a frame, 
+    // it will just open directly in that tab so you can actually play.
+    win.document.body.appendChild(iframe);
+    
+    // If after 3 seconds the frame is still empty, force a direct load
+    setTimeout(() => {
+        try {
+            if (iframe.contentWindow.length === 0) {
+                win.location.href = decodedUrl;
+            }
+        } catch (e) {
+            // If we hit a security error here, it means the site is 
+            // blocking frames, so we just let the user click a direct link.
+        }
+    }, 3000);
+}
+
+
 
     setInterval(updateClock, 1000);
     updateClock();
