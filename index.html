@@ -156,6 +156,14 @@
     <h1>BURNING recources ;)</h1>
     <h3> YOU MUST AND I MEAN MUST ALWAYS ALLOW POPUPS FOR THIS TO WORK</h3>
     <p>(sorry for the images and lack of games this is still in beta) </p>
+    
+<div class="section-title">DAILY ARCHIVE</div>
+<div id="history-box" style="max-width: 800px; margin: 10px auto; background: #222; border: 2px solid var(--accent); padding: 15px; border-radius: 8px; font-family: sans-serif; color: #eee; font-size: 0.9rem;">
+    <h4 style="margin: 0 0 10px 0; color: var(--text-color);">On This Day: <span id="current-date"></span></h4>
+    <p id="history-content">Loading daily record...</p>
+</div>
+
+
     <button id="unblock-btn" onclick="stealthLaunch()">LAUNCH STEALTH MODE</button>
 </header>
 
@@ -266,7 +274,37 @@
     </a>
 </div> 
 <script>
+   
+function loadHistory() {
+    const now = new Date();
+    const month = now.getMonth() + 1; // Months are 0-11
+    const day = now.getDate();
     
+    // Format the date for the header
+    const dateString = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+    document.getElementById('current-date').textContent = dateString;
+
+    // Create a key like "4-26" (April 26)
+    const todayKey = `${month}-${day}`;
+
+    // Here is your mini-database of history facts
+    const events = {
+        "4-26": "1986: The Chernobyl nuclear power plant in Ukraine suffers a catastrophic explosion.",
+        "4-27": "1521: Explorer Ferdinand Magellan is killed in the Philippines.",
+        "4-28": "1945: Italian dictator Benito Mussolini is executed.",
+        // You can add as many dates as you want here
+    };
+
+    // If you haven't added today's date yet, it shows this default message
+    const defaultEvent = "1990: Research into carbon fiber composite materials leads to breakthroughs in aerospace engineering.";
+    
+    document.getElementById('history-content').textContent = events[todayKey] || defaultEvent;
+}
+
+// Make sure to run this function when the page loads
+loadHistory();
+
+ 
     function stealthLaunch() {
         let win = window.open('about:blank', '_blank');
         if (!win) {
