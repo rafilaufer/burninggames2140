@@ -1,17 +1,18 @@
+
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer">
-    <title>remember for class</title>
+    <title>Archival Study Hub</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #1a1a1a;
             --card-bg: rgba(40, 40, 40, 0.95);
-            --text-color: #f1c40f; 
-            --accent: #e74c3c; 
+            --text-color: #f1c40f;
+            --accent: #e74c3c;
             --hover-flame: #ff5722;
             --retro-font: 'Press Start 2P', cursive;
         }
@@ -27,22 +28,10 @@
             color: var(--text-color);
             margin: 0;
             padding: 20px;
-            background-image: 
-                linear-gradient(rgba(26, 26, 26, 0.8), rgba(26, 26, 26, 0.8)), 
-                repeating-linear-gradient(
-                    90deg,
-                    #ff5722 0px,
-                    #ff5722 2px,
-                    transparent 2px,
-                    transparent 4px
-                ),
-                repeating-linear-gradient(
-                    180deg,
-                    #e74c3c 0px,
-                    #e74c3c 10px,
-                    transparent 10px,
-                    transparent 20px
-                );
+            background-image:
+                linear-gradient(rgba(26, 26, 26, 0.8), rgba(26, 26, 26, 0.8)),
+                repeating-linear-gradient(90deg, #ff5722 0px, #ff5722 2px, transparent 2px, transparent 4px),
+                repeating-linear-gradient(180deg, #e74c3c 0px, #e74c3c 10px, transparent 10px, transparent 20px);
             background-size: 100% 100%, 4px 4px, 100% 100px;
             background-attachment: fixed, fixed, scroll;
             animation: pixelRain 15s linear infinite;
@@ -50,7 +39,7 @@
 
         header { text-align: center; padding: 30px 0; }
         h1 { font-size: 2rem; text-shadow: 3px 3px 0px var(--accent); margin-bottom: 20px; }
-        
+       
         .section-title {
             text-align: center;
             font-size: 1rem;
@@ -111,33 +100,6 @@
             border-radius: 15px;
         }
 
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            margin-bottom: 20px;
-        }
-
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-        }
-
-        .channel-btn {
-            display: block;
-            width: fit-content;
-            margin: 10px auto;
-            padding: 12px 20px;
-            background: #c0392b;
-            color: white;
-            text-decoration: none;
-            font-size: 0.6rem;
-            border: 3px solid #fff;
-            border-radius: 5px;
-            text-align: center;
-        }
-
         #unblock-btn {
             font-family: 'Press Start 2P';
             background: #d35400;
@@ -148,251 +110,171 @@
             margin-bottom: 20px;
             font-size: 0.7rem;
         }
+
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; margin-bottom: 20px; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>BURNING recources ;)</h1>
-    <h3> YOU MUST AND I MEAN MUST ALWAYS ALLOW POPUPS FOR THIS TO WORK</h3>
-    <p>(sorry for the images and lack of games this is still in beta) </p>
-    
-
-
+    <h1>BURNING RESOURCES ;)</h1>
+    <h3>PLEASE ALLOW POPUPS FOR STEALTH MODE</h3>
     <button id="unblock-btn" onclick="stealthLaunch()">LAUNCH STEALTH MODE</button>
 </header>
 
 <div class="section-title">WORLD CLOCK & HISTORY</div>
 <div class="ent-container" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; text-align: center;">
-    
     <div style="flex: 1; min-width: 250px; border-right: 2px dashed var(--accent); padding: 10px;">
         <div id="clock-time" style="font-size: 1.2rem; color: #fff; margin-bottom: 10px;">00:00:00</div>
         <div id="clock-date" style="font-size: 0.5rem; color: var(--text-color);">Loading...</div>
         <select id="timezone-selector" onchange="updateClock()" style="margin-top: 15px; background: #000; color: #fff; font-family: 'Press Start 2P'; font-size: 0.4rem; padding: 5px;">
-            <option value="UTC">UTC (London)</option>
             <option value="America/New_York" selected>EST (New York)</option>
             <option value="America/Los_Angeles">PST (Los Angeles)</option>
-            <option value="Europe/Berlin">CET (Berlin)</option>
+            <option value="Europe/London">GMT (London)</option>
             <option value="Asia/Tokyo">JST (Tokyo)</option>
         </select>
     </div>
-
     <div style="flex: 1; min-width: 250px; padding: 10px;">
         <div style="font-size: 0.6rem; color: var(--accent); margin-bottom: 10px;">ON THIS DAY:</div>
         <div id="history-fact" style="font-size: 0.45rem; color: #fff; line-height: 1.6;">Fetching historical records...</div>
     </div>
 </div>
 
-
-<div class="section-title">recource ZONE</div>
+<div class="section-title">RESOURCE ZONE</div>
 
 <div class="game-grid">
-    <a class="game-card" style="cursor: pointer;" onclick="openGame('aHR0cHM6Ly9zdGF0aWMuZ2FtZXM2OC5jb20vMjAyNC8wMS9sZXZlbC1kZXZpbC8=')">
+    <a class="game-card" onclick="openGame('aHR0cHM6Ly9zdGF0aWMuZ2FtZXM2OC5jb20vMjAyNC8wMS9sZXZlbC1kZXZpbC8=')">
         <img src="https://assets.poki.com/img/games/level-devil-icon.png" alt="Level Devil">
         <span>Stability Research Module</span>
     </a>
-
-    <a class="game-card" style="cursor: pointer;" onclick="openGame('aHR0cHM6Ly9zaXRlcy5nb29nbGUuY29tL3ZpZXcvZ2xhc2dvd3N0dWRlbnRzL2dhbWVzL3dlLWJlY29tZS13aGF0LXdlLWJlaG9sZA==')">
+    <a class="game-card" onclick="openGame('aHR0cHM6Ly9zaXRlcy5nb29nbGUuY29tL3ZpZXcvZ2xhc2dvd3N0dWRlbnRzL2dhbWVzL3dlLWJlY29tZS13aGF0LXdlLWJlaG9sZA==')">
         <img src="https://img.poki.com/cdn-cgi/image/f=auto/b00ad8c72f53412a8a5f824e414c1737.png" alt="WBWWB">
         <span>Societal Observation Study</span>
     </a>
-
-    <a class="game-card" style="cursor: pointer;" onclick="openGame('aHR0cHM6Ly9nYW1lczY4LmNvbS9mb3Jnb3R0ZW4taGlsbC1zdXJnZXJ5Lmh0bWw=')">
+    <a class="game-card" onclick="openGame('aHR0cHM6Ly9nYW1lczY4LmNvbS9mb3Jnb3R0ZW4taGlsbC1zdXJnZXJ5Lmh0bWw=')">
         <img src="https://assets.poki.com/img/games/forgotten-hill-surgery-icon.png" alt="Forgotten Hill">
         <span>Medical History Archive</span>
     </a>
-
-    <a class="game-card" style="cursor: pointer;" onclick="openGame('aHR0cHM6Ly9zaG9ydC1saWZlLmdpdGh1Yi5pby8=')">
+    <a class="game-card" onclick="openGame('aHR0cHM6Ly9zaG9ydC1saWZlLmdpdGh1Yi5pby8=')">
         <img src="https://assets.poki.com/img/games/short-life-icon.png" alt="Short Life">
         <span>Biological Durability Test</span>
     </a>
-
-    <a class="game-card" style="cursor: pointer;" onclick="openGame('aHR0cHM6Ly9yYWdkb2xsaGl0LmdpdGh1Yi5pby8=')">
+    <a class="game-card" onclick="openGame('aHR0cHM6Ly9yYWdkb2xsaGl0LmdpdGh1Yi5pby8=')">
         <img src="https://assets.poki.com/img/games/ragdoll-hit-icon.png" alt="Ragdoll Hit">
         <span>Kinetic Physics Lab</span>
     </a>
-
-    <a class="game-card" style="cursor: pointer;" onclick="openGame('aHR0cHM6Ly9nYW1lczY4LmNvbS9zdGlja21hbi1hbm5paGlsYXRpb24tMi5odG1s')">
+    <a class="game-card" onclick="openGame('aHR0cHM6Ly9nYW1lczY4LmNvbS9zdGlja21hbi1hbm5paGlsYXRpb24tMi5odG1s')">
         <img src="https://images.crazygames.com/stickman-annihilation-2/20210211100226/stickman-annihilation-2-cover.png" alt="Stickman">
         <span>Structural Integrity Analysis</span>
     </a>
-
-    <a class="game-card" style="cursor: pointer;" onclick="openGame('aHR0cHM6Ly90dXJib2Rpc21vdW50aW5nLmdpdGh1Yi5pby8=')">
+    <a class="game-card" onclick="openGame('aHR0cHM6Ly90dXJib2Rpc21vdW50aW5nLmdpdGh1Yi5pby8=')">
         <img src="https://images.crazygames.com/games/turbo-dismounting/cover-1583401543661.png" alt="Turbo">
         <span>Velocity Impact Module</span>
     </a>
-
-    <a class="game-card" style="cursor: pointer;" onclick="openGame('aHR0cHM6Ly9nYW1lczY4LmNvbS9zdGljay1jcnVzaC5odG1s')">
+    <a class="game-card" onclick="openGame('aHR0cHM6Ly9nYW1lczY4LmNvbS9zdGljay1jcnVzaC5odG1s')">
         <img src="https://images.crazygames.com/stick-crush/20210125155909/stick-crush-cover.png" alt="Stick Crush">
         <span>Compression Strength Test</span>
     </a>
-
-    <a class="game-card" style="cursor: pointer;" onclick="openGame('aHR0cHM6Ly9zaXRlcy5nb29nbGUuY29tL3ZpZXcvZ2xhc2dvd3N0dWRlbnRzL2dhbWVzL2dsYWRpaG9wcGVycw==')">
+    <a class="game-card" onclick="openGame('aHR0cHM6Ly9zaXRlcy5nb29nbGUuY29tL3ZpZXcvZ2xhc2dvd3N0dWRlbnRzL2dhbWVzL2dsYWRpaG9wcGVycw==')">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Hopper_icon.svg/512px-Hopper_icon.svg.png" alt="Gladihoppers">
         <span>Classical Combat History</span>
     </a>
-
-    <a class="game-card" style="cursor: pointer;" onclick="openGame('aHR0cHM6Ly9zaXRlcy5nb29nbGUuY29tL3ZpZXcvZ2xhc2dvd3N0dWRlbnRzL2dhbWVzL21pbmVjcmFmdC0xLTgg')">
+    <a class="game-card" onclick="openGame('aHR0cHM6Ly9zaXRlcy5nb29nbGUuY29tL3ZpZXcvZ2xhc2dvd3N0dWRlbnRzL2dhbWVzL21pbmVjcmFmdC0xLTgg')">
         <img src="https://upload.wikimedia.org/wikipedia/en/5/51/Minecraft_cover.png" alt="Minecraft">
         <span>Architectural Drafting Tool</span>
     </a>
-
-    <a class="game-card" style="cursor: pointer;" onclick="openGame('aHR0cHM6Ly9zaXRlcy5nb29nbGUuY29tL3ZpZXcvZ2xhc2dvd3N0dWRlbnRzL2dhbWVzLzUtbmlnaHRzLWF0LWZyZWRkeXM=')">
+    <a class="game-card" onclick="openGame('aHR0cHM6Ly9zaXRlcy5nb29nbGUuY29tL3ZpZXcvZ2xhc2dvd3N0dWRlbnRzL2dhbWVzLzUtbmlnaHRzLWF0LWZyZWRkeXM=')">
         <img src="https://upload.wikimedia.org/wikipedia/en/f/f3/Five_Nights_at_Freddy%27s_1_cover.png" alt="FNAF">
         <span>Surveillance Logic Study</span>
     </a>
-
-    <a class="game-card" style="cursor: pointer;" onclick="openGame('aHR0cHM6Ly9zaXRlcy5nb29nbGUuY29tL3ZpZXcvd2FycC1zcGVlZA==')">
+    <a class="game-card" onclick="openGame('aHR0cHM6Ly9zaXRlcy5nb29nbGUuY29tL3ZpZXcvd2FycC1zcGVlZA==')">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Warp_Speed_game.jpg/320px-Warp_Speed_game.jpg" alt="Warp Speed">
         <span>Interstellar Navigation</span>
     </a>
-
-    <a class="game-card" style="cursor: pointer;" onclick="openGame('aHR0cHM6Ly9mcmVlcmlkZXIyLmdpdGh1Yi5pby8=')">
+    <a class="game-card" onclick="openGame('aHR0cHM6Ly9mcmVlcmlkZXIyLmdpdGh1Yi5pby8=')">
         <img src="https://www.addictinggames.com/sites/default/files/free-rider-2.png" alt="Free Rider">
         <span>Topography Mapping Lab</span>
     </a>
-
-    <a class="game-card" style="cursor: pointer;" onclick="openGame('aHR0cHM6Ly9zbGl0aGVyLWlvLmdpdGh1Yi5pby8=')">
+    <a class="game-card" onclick="openGame('aHR0cHM6Ly9zbGl0aGVyLWlvLmdpdGh1Yi5pby8=')">
         <img src="https://upload.wikimedia.org/wikipedia/en/1/1f/Slither.io_game_logo.png" alt="Slither IO">
         <span>Biological Growth Model</span>
     </a>
-
-    <a class="game-card" style="cursor: pointer;" onclick="openGame('aHR0cHM6Ly9lc2NhcGUtcm9hZC5naXRodWIuaW8v')">
+    <a class="game-card" onclick="openGame('aHR0cHM6Ly9lc2NhcGUtcm9hZC5naXRodWIuaW8v')">
         <img src="https://pbs.twimg.com/media/DEfYkfTUQAAv_mP.jpg" alt="Escape Road">
         <span>Urban Traffic Patterns</span>
     </a>
-
-    <a class="game-card" style="cursor: pointer;" onclick="openGame('aHR0cHM6Ly9nYWJyaWVsY2lydWxsaS5naXRodWIuaW8vMjA0OC8=')">
+    <a class="game-card" onclick="openGame('aHR0cHM6Ly9nYWJyaWVsY2lydWxsaS5naXRodWIuaW8vMjA0OC8=')">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/2048_logo.svg/1200px-2048_logo.svg.png" alt="2048">
         <span>Exponential Math Module</span>
     </a>
-
-    <a class="game-card" style="cursor: pointer;" onclick="openGame('aHR0cHM6Ly9kb29kbGUtanVtcC5naXRodWIuaW8v')">
+    <a class="game-card" onclick="openGame('aHR0cHM6Ly9kb29kbGUtanVtcC5naXRodWIuaW8v')">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Doodle_Jump_icon.svg/512px-Doodle_Jump_icon.svg.png" alt="Doodle Jump">
         <span>Atmospheric Ascent Study</span>
     </a>
-
-    <a class="game-card" style="cursor: pointer;" onclick="openGame('aHR0cHM6Ly9jaHJvbWUtZGluby5naXRodWIuaW8v')">
+    <a class="game-card" onclick="openGame('aHR0cHM6Ly9jaHJvbWUtZGluby5naXRodWIuaW8v')">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Chromedino.jpg/512px-Chromedino.jpg" alt="Dino">
         <span>Paleontology Overview</span>
-    </a>
-</div>
-
-
-    </div>
-</div>
-
     </a>
 </div>
 
 <div class="section-title">ENTERTAINMENT</div>
 <div class="ent-container">
     <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
     </div>
-    <a href="https://www.youtube.com/channel/UCX2uY734wRQELlT_uh8Fl4ZA" target="_blank" class="channel-btn">
-        SUB TO BURNING G-MES
-    </a>
-</div> 
+</div>
+
 <script>
-   
-
-async function updateClock() {
-    const tz = document.getElementById('timezone-selector').value;
-    const now = new Date();
-    
-    // Format Time
-    const timeStr = now.toLocaleTimeString('en-GB', { timeZone: tz, hour12: false });
-    document.getElementById('clock-time').textContent = timeStr;
-    
-    // Format Date
-    const dateStr = now.toLocaleDateString('en-US', { 
-        timeZone: tz, 
-        weekday: 'short', 
-        month: 'short', 
-        day: 'numeric' 
-    });
-    document.getElementById('clock-date').textContent = dateStr;
-}
-
-async function fetchHistory() {
-    const now = new Date();
-    const month = now.getMonth() + 1;
-    const day = now.getDate();
-    
-    try {
-        // Fetching from Wikimedia's "On This Day" API
-        const response = await fetch(`https://en.wikipedia.org/api/rest_v1/feed/onthisday/events/${month}/${day}`);
-        const data = await response.json();
-        
-        // Pick a random event from the list
-        if (data.events && data.events.length > 0) {
-            const randomEvent = data.events[Math.floor(Math.random() * data.events.length)];
-            document.getElementById('history-fact').textContent = `${randomEvent.year}: ${randomEvent.text}`;
-        }
-    } catch (error) {
-        document.getElementById('history-fact').textContent = "1986: The Chernobyl disaster occurs in Ukraine.";
+    // --- CLOCK ---
+    function updateClock() {
+        const tz = document.getElementById('timezone-selector').value;
+        const now = new Date();
+        document.getElementById('clock-time').textContent = now.toLocaleTimeString('en-GB', { timeZone: tz, hour12: false });
+        document.getElementById('clock-date').textContent = now.toLocaleDateString('en-US', { timeZone: tz, weekday: 'short', month: 'short', day: 'numeric' });
     }
-}
 
-// Initialize
-setInterval(updateClock, 1000);
-updateClock();
-fetchHistory();
-
- function openGame(encodedUrl) {
-    const decodedUrl = atob(encodedUrl);
-    // Instead of about:blank, we open the mirror directly in a new tab
-    // This makes it 10x more likely the game will actually play
-    let win = window.open(decodedUrl, '_blank');
-    if (!win) {
-        alert('Please allow popups!');
-    }
-}
-
+    // --- HISTORY ---
+    async function fetchHistory() {
+        const now = new Date();
+        const month = now.getMonth() + 1;
+        const day = now.getDate();
+        try {
+            const response = await fetch(`https://en.wikipedia.org/api/rest_v1/feed/onthisday/events/${month}/${day}`);
+            const data = await response.json();
+            if (data.events && data.events.length > 0) {
+                const randomEvent = data.events[Math.floor(Math.random() * data.events.length)];
+                document.getElementById('history-fact').textContent = `${randomEvent.year}: ${randomEvent.text}`;
+            }
+        } catch (e) {
+            document.getElementById('history-fact').textContent = "1990: Research into composite materials leads to aerospace breakthroughs.";
         }
-        let html = `
-            <!DOCTYPE html>
-            <html>
-            <head>
-                <title>My Drive - Google Drive</title>
-                <link rel="icon" type="image/x-icon" href="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_32dp.png">
-                <style>
-                    body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; }
-                    iframe { border: none; width: 100%; height: 100%; }
-                </style>
-            </head>
-            <body>
-                <iframe src="${window.location.href}"></iframe>
-            </body>
-            
-        `;
+    }
+
+    // --- STEALTH & GAMES ---
+    function stealthLaunch() {
+        let win = window.open('about:blank', '_blank');
+        if (!win) return alert('Allow popups!');
+        let html = `<html><head><title>My Drive - Google Drive</title><link rel="icon" href="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_32dp.png"><style>body,html{margin:0;padding:0;height:100%;overflow:hidden;}iframe{border:none;width:100%;height:100%;}</style></head><body><iframe src="${window.location.href}"></iframe></body></html>`;
         win.document.write(html);
         win.document.close();
     }
 
-    
     function openGame(encodedUrl) {
         const decodedUrl = atob(encodedUrl);
         let win = window.open('about:blank', '_blank');
-        if (!win) {
-            alert('Popup blocked! Check the icon in your address bar.');
-            return;
-        }
+        if (!win) return alert('Allow popups!');
         win.document.title = "Google Docs";
         let link = win.document.createElement('link');
         link.rel = 'icon';
         link.href = 'https://ssl.gstatic.com/docs/documents/images/kix-favicon-2020q4.ico';
         win.document.head.appendChild(link);
-        win.document.body.style.margin = '0';
-        win.document.body.style.height = '100vh';
-        let iframe = win.document.createElement('iframe');
-        iframe.style.border = 'none';
-        iframe.style.width = '100%';
-        iframe.style.height = '100%';
-        iframe.src = decodedUrl;
-        win.document.body.appendChild(iframe);
+        win.location.href = decodedUrl;
     }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+    fetchHistory();
 </script>
 </body>
 </html>
