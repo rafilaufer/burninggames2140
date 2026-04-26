@@ -162,6 +162,28 @@
     <button id="unblock-btn" onclick="stealthLaunch()">LAUNCH STEALTH MODE</button>
 </header>
 
+<div class="section-title">WORLD CLOCK & HISTORY</div>
+<div class="ent-container" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; text-align: center;">
+    
+    <div style="flex: 1; min-width: 250px; border-right: 2px dashed var(--accent); padding: 10px;">
+        <div id="clock-time" style="font-size: 1.2rem; color: #fff; margin-bottom: 10px;">00:00:00</div>
+        <div id="clock-date" style="font-size: 0.5rem; color: var(--text-color);">Loading...</div>
+        <select id="timezone-selector" onchange="updateClock()" style="margin-top: 15px; background: #000; color: #fff; font-family: 'Press Start 2P'; font-size: 0.4rem; padding: 5px;">
+            <option value="UTC">UTC (London)</option>
+            <option value="America/New_York" selected>EST (New York)</option>
+            <option value="America/Los_Angeles">PST (Los Angeles)</option>
+            <option value="Europe/Berlin">CET (Berlin)</option>
+            <option value="Asia/Tokyo">JST (Tokyo)</option>
+        </select>
+    </div>
+
+    <div style="flex: 1; min-width: 250px; padding: 10px;">
+        <div style="font-size: 0.6rem; color: var(--accent); margin-bottom: 10px;">ON THIS DAY:</div>
+        <div id="history-fact" style="font-size: 0.45rem; color: #fff; line-height: 1.6;">Fetching historical records...</div>
+    </div>
+</div>
+
+
 <div class="section-title">GAMING ZONE</div>
 
 <div class="game-grid">
@@ -270,36 +292,50 @@
 </div> 
 <script>
    
-function loadHistory() {
+
+async function updateClock() {
+    const tz = document.getElementById('timezone-selector').value;
     const now = new Date();
-    const month = now.getMonth() + 1; // Months are 0-11
-    const day = now.getDate();
     
-    // Format the date for the header
-    const dateString = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
-    document.getElementById('current-date').textContent = dateString;
-
-    // Create a key like "4-26" (April 26)
-    const todayKey = `${month}-${day}`;
-
-    // Here is your mini-database of history facts
-    const events = {
-        "4-26": "1986: The Chernobyl nuclear power plant in Ukraine suffers a catastrophic explosion.",
-        "4-27": "1521: Explorer Ferdinand Magellan is killed in the Philippines.",
-        "4-28": "1945: Italian dictator Benito Mussolini is executed.",
-        // You can add as many dates as you want here
-    };
-
-    // If you haven't added today's date yet, it shows this default message
-    const defaultEvent = "1990: Research into carbon fiber composite materials leads to breakthroughs in aerospace engineering.";
+    // Format Time
+    const timeStr = now.toLocaleTimeString('en-GB', { timeZone: tz, hour12: false });
+    document.getElementById('clock-time').textContent = timeStr;
     
-    document.getElementById('history-content').textContent = events[todayKey] || defaultEvent;
+    // Format Date
+    const dateStr = now.toLocaleDateString('en-US', { 
+        timeZone: tz, 
+        weekday: 'short', 
+        month: 'short', 
+        day: 'numeric' 
+    });
+    document.getElementById('clock-date').textContent = dateStr;
 }
 
-// Make sure to run this function when the page loads
-loadHistory();
+async function fetchHistory() {
+    const now = new Date();
+    const month = now.getMonth() + 1;
+    const day = now.getDate();
+    
+    try {
+        // Fetching from Wikimedia's "On This Day" API
+        const response = await fetch(`https://en.wikipedia.org/api/rest_v1/feed/onthisday/events/${month}/${day}`);
+        const data = await response.json();
+        
+        // Pick a random event from the list
+        if (data.events && data.events.length > 0) {
+            const randomEvent = data.events[Math.floor(Math.random() * data.events.length)];
+            document.getElementById('history-fact').textContent = `${randomEvent.year}: ${randomEvent.text}`;
+        }
+    } catch (error) {
+        document.getElementById('history-fact').textContent = "1986: The Chernobyl disaster occurs in Ukraine.";
+    }
+}
 
- 
+// Initialize
+setInterval(updateClock, 1000);
+updateClock();
+fetchHistory();
+
     function stealthLaunch() {
         let win = window.open('about:blank', '_blank');
         if (!win) {
