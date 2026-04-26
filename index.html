@@ -17,8 +17,8 @@
         }
 
         @keyframes pixelRain {
-            1% { background-position: 0px 0px; }
-            100% { background-position: 0px 1000px; }
+            0% { background-position: 0 0; }
+            100% { background-position: 0 100px; }
         }
 
         body {
@@ -29,10 +29,23 @@
             padding: 20px;
             background-image: 
                 linear-gradient(rgba(26, 26, 26, 0.8), rgba(26, 26, 26, 0.8)), 
-                url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAKrVq36z8gAFWNgAKmD8cF8uDhQEqQAACorD54uY2S1AAAAAElFTkSuQmCC");
-            background-repeat: repeat;
-            background-attachment: fixed;
-            animation: pixelRain 25s linear infinite;
+                repeating-linear-gradient(
+                    90deg,
+                    #ff5722 0px,
+                    #ff5722 2px,
+                    transparent 2px,
+                    transparent 4px
+                ),
+                repeating-linear-gradient(
+                    180deg,
+                    #e74c3c 0px,
+                    #e74c3c 10px,
+                    transparent 10px,
+                    transparent 20px
+                );
+            background-size: 100% 100%, 4px 4px, 100% 100px;
+            background-attachment: fixed, fixed, scroll;
+            animation: pixelRain 15s linear infinite;
         }
 
         header { text-align: center; padding: 30px 0; }
@@ -202,13 +215,13 @@
         <span>Free Rider 2</span>
     </a>
     
-    <a href="https://theslir.io/" target="_blank" class="game-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Slither.io_logo.svg/512px-Slither.io_logo.svg.png" alt="Slither">
+    <a href="https://slither.io/" target="_blank" class="game-card">
+        <img src="https://media.licdn.com/dms/image/C5112AQGuM-p3-ykYaA/article-cover_image-shrink_600_2000/0/1584969849661?e=2147483647&v=beta&t=VY7PxqcxQ8zTMqEYe4kxQqfv_3FoKMYfY5DHPD_PlmQ" alt="Slither">
         <span>Biology Simulation 1.1</span>
     </a>
 
     <a href="https://escaperoad.io/game/escape-road" target="_blank" class="game-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Road_icon.svg/512px-Road_icon.svg.png" alt="Escape Road">
+        <img src="https://pbs.twimg.com/media/DEfYkfTUQAAv_mP.jpg" alt="Escape Road">
         <span>Velocity Research Project</span>
     </a>
 
